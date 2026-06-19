@@ -3,202 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เที่ยวเมืองไทย - Amazing Thailand Gallery</title>
+    <title>Amazing Thailand | แกลลอรีสถานที่ท่องเที่ยว</title>
+    <!-- นำเข้าฟอนต์ภาษาไทยจาก Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* รีเซ็ตค่าพื้นฐาน */
+        /* ตั้งค่าสไตล์พื้นฐาน */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Kanit', sans-serif;
         }
 
         body {
-            background-color: #f7f9fa;
+            background-color: #f8f9fa;
             color: #333;
         }
 
-        /* ส่วนหัวเว็บบอร์ด (Header) */
+        /* ส่วนหัวของเว็บไซต์ (Header) */
         header {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=1920') no-repeat center center/cover;
-            height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-weight: 600;
         }
 
         header p {
             font-size: 1.2rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            font-weight: 300;
+            opacity: 0.9;
         }
 
-        /* ส่วนเนื้อหาหลัก (Gallery Container) */
+        /* ส่วนพื้นที่แกลลอรี (Gallery Grid) */
         .container {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* ระบบ Grid สำหรับจัดวางรูปภาพ */
-        .gallery-grid {
+        .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
+            margin-bottom: 60px;
         }
 
-        /* การ์ดสถานที่ท่องเที่ยว */
+        /* กล่องใส่รูปภาพแต่ละรูป (Card) */
         .gallery-item {
-            background: white;
+            position: relative;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            aspect-ratio: 4/3; /* บังคับสัดส่วนภาพให้เท่ากัน */
         }
 
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        /* ส่วนรูปภาพ */
-        .image-box {
-            position: relative;
-            overflow: hidden;
-            height: 220px;
-            background-color: #e0e0e0; /* สีพื้นหลังระหว่างรอโหลดรูป */
-        }
-
-        .image-box img {
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.4s ease;
         }
 
-        .gallery-item:hover .image-box img {
+        /* เอฟเฟกต์เมื่อเอาเมาส์ชี้ (Hover) */
+        .gallery-item:hover img {
             transform: scale(1.1);
         }
 
-        /* แท็กบอกภาค (Tag) */
-        .location-tag {
+        /* ป้ายชื่อสถานที่ */
+        .overlay {
             position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: #ff5722;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
             color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        /* ข้อมูลใต้ภาพ */
-        .info-box {
             padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
         }
 
-        .info-box h3 {
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-            color: #2c3e50;
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
         }
 
-        .info-box p {
-            font-size: 0.95rem;
-            color: #7f8c8d;
-            line-height: 1.5;
+        .overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
         }
 
-        /* ส่วนท้ายเว็บ (Footer) */
+        .overlay p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ส่วนท้าย (Footer) */
         footer {
             text-align: center;
-            padding: 30px;
-            background-color: #2c3e50;
+            padding: 20px;
+            background-color: #222;
             color: white;
-            margin-top: 60px;
-            font-size: 0.9rem;
+            margin-top: auto;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
     <header>
-        <h1>แกลเลอรีท่องเที่ยวประเทศไทย</h1>
-        <p>บันทึกความทรงจำและสถานที่สวยงามทั่วไทยที่คุณไม่ควรพลาด</p>
+        <h1>🇹🇭 เที่ยวเมืองไทย ไม่ไปไม่รู้</h1>
+        <p>รวมภาพประทับใจจากสถานที่ท่องเที่ยวทั่วประเทศไทย</p>
     </header>
 
-    <!-- Main Gallery Section -->
     <div class="container">
-        <div class="gallery-grid">
-
-            <!-- การ์ดที่ 1: เชียงใหม่ -->
+        <div class="gallery">
+            
+            <!-- รูปที่ 1 -->
             <div class="gallery-item">
-                <div class="image-box">
-                    <span class="location-tag">ภาคเหนือ</span>
-                    <!-- 💡 ใส่ที่อยู่รูปภาพของคุณที่ src ด้านล่างนี้ -->
-                    <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?q=80&w=600" alt="เชียงใหม่">
-                </div>
-                <div class="info-box">
-                    <h3>ดอยอินทนนท์, เชียงใหม่</h3>
-                    <p>สัมผัสลมหนาวและทะเลหมอกบนยอดดอยที่สูงที่สุดในประเทศไทย แหล่งรวมธรรมชาติอันสมบูรณ์</p>
+                <!-- เปลี่ยนลิงก์ใน src="..." เป็นรูปของคุณ -->
+                <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80" alt="เชียงใหม่">
+                <div class="overlay">
+                    <h3>เชียงใหม่</h3>
+                    <p>ธรรมชาติและวัฒนธรรมล้านนา</p>
                 </div>
             </div>
 
-            <!-- การ์ดที่ 2: กรุงเทพฯ -->
+            <!-- รูปที่ 2 -->
             <div class="gallery-item">
-                <div class="image-box">
-                    <span class="location-tag">ภาคกลาง</span>
-                    <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=600" alt="กรุงเทพฯ">
-                </div>
-                <div class="info-box">
-                    <h3>วัดพระแก้ว, กรุงเทพฯ</h3>
-                    <p>ชมความงดงามของสถาปัตยกรรมไทยอันเป็นเอกลักษณ์และพระแก้วมรกตคู่บ้านคู่เมือง</p>
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80" alt="กรุงเทพมหานคร">
+                <div class="overlay">
+                    <h3>กรุงเทพมหานคร</h3>
+                    <p>สีสันแห่งเมืองหลวง</p>
                 </div>
             </div>
 
-            <!-- การ์ดที่ 3: กระบี่ -->
+            <!-- รูปที่ 3 -->
             <div class="gallery-item">
-                <div class="image-box">
-                    <span class="location-tag">ภาคใต้</span>
-                    <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=600" alt="กระบี่">
-                </div>
-                <div class="info-box">
-                    <h3>ไร่เลย์, กระบี่</h3>
-                    <p>สวรรค์ของนักปีนผาและผู้รักหาดทรายขาวละเอียด ทะเลสีครามที่ล้อมรอบด้วยหน้าผาหินปูน</p>
+                <img src="https://images.unsplash.com/photo-1589394815804-964ce0ff9657?auto=format&fit=crop&w=800&q=80" alt="ภูเก็ต">
+                <div class="overlay">
+                    <h3>ภูเก็ต</h3>
+                    <p>ไข่มุกแห่งอันดามัน</p>
                 </div>
             </div>
 
-            <!-- การ์ดที่ 4: สุโขทัย -->
+            <!-- รูปที่ 4 -->
             <div class="gallery-item">
-                <div class="image-box">
-                    <span class="location-tag">ภาคเหนือ</span>
-                    <img src="https://images.unsplash.com/photo-1608958416710-bbbf7778a02c?q=80&w=600" alt="สุโขทัย">
-                </div>
-                <div class="info-box">
-                    <h3>อุทยานประวัติศาสตร์สุโขทัย</h3>
-                    <p>ย้อนเวลาศึกษาประวัติศาสตร์ไทยท่ามกลางโบราณสถานและมรดกโลกอันทรงคุณค่า</p>
+                <img src="https://images.unsplash.com/photo-1558500213-9580b067a992?auto=format&fit=crop&w=800&q=80" alt="พระนครศรีอยุธยา">
+                <div class="overlay">
+                    <h3>พระนครศรีอยุธยา</h3>
+                    <p>มรดกโลกทางวัฒนธรรม</p>
                 </div>
             </div>
 
-            <!-- 💡 คุณสามารถก๊อปปี้บล็อกด้านบนเพื่อเพิ่มสถานที่อื่นๆ ได้ตามต้องการเลยครับ -->
+            <!-- รูปที่ 5 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1550684376-efcbd6e3f031?auto=format&fit=crop&w=800&q=80" alt="กระบี่">
+                <div class="overlay">
+                    <h3>กระบี่</h3>
+                    <p>สวรรค์ของคนรักทะเล</p>
+                </div>
+            </div>
+
+            <!-- รูปที่ 6 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600109968846-92f70eb4e594?auto=format&fit=crop&w=800&q=80" alt="แม่ฮ่องสอน">
+                <div class="overlay">
+                    <h3>แม่ฮ่องสอน</h3>
+                    <p>เมืองสามหมอก</p>
+                </div>
+            </div>
 
         </div>
     </div>
 
-    <!-- Footer Section -->
     <footer>
-        <p>&copy; 2026 Thailand Travel Gallery. สร้างด้วยความรักในการเดินทาง</p>
+        <p>&copy; 2026 แกลลอรีท่องเที่ยวไทย. สร้างสรรค์ด้วยความหลงใหล.</p>
     </footer>
 
 </body>
