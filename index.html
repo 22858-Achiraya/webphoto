@@ -3,50 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazing Thailand | แกลลอรีสถานที่ท่องเที่ยว</title>
-    <!-- นำเข้าฟอนต์ภาษาไทยจาก Google Fonts -->
+    <title>Amazing Thailand | คลังภาพท่องเที่ยวไทย</title>
+    <!-- โหลดฟอนต์ภาษาไทยจาก Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* ตั้งค่าสไตล์พื้นฐาน */
-        * {
+        /* ตั้งค่าทั่วไป */
+        body {
+            font-family: 'Kanit', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Kanit', sans-serif;
-        }
-
-        body {
             background-color: #f8f9fa;
             color: #333;
         }
 
-        /* ส่วนหัวของเว็บไซต์ (Header) */
+        /* ส่วนหัวเว็บ (Header) */
         header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1508009603885-247a50f44cea?auto=format&fit=crop&w=1200&q=80') center/cover;
             color: white;
             text-align: center;
-            padding: 60px 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 100px 20px;
         }
 
         header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 600;
+            font-size: 3em;
+            margin: 0;
+            letter-spacing: 2px;
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.2em;
+            margin-top: 10px;
             font-weight: 300;
-            opacity: 0.9;
         }
 
-        /* ส่วนพื้นที่แกลลอรี (Gallery Grid) */
+        /* ส่วนแสดงผลรูปภาพ (Gallery Grid) */
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 40px auto;
             padding: 0 20px;
         }
 
@@ -54,130 +49,123 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 60px;
         }
 
-        /* กล่องใส่รูปภาพแต่ละรูป (Card) */
-        .gallery-item {
-            position: relative;
+        /* การ์ดสถานที่ (Cards) */
+        .card {
+            background-color: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            cursor: pointer;
-            aspect-ratio: 4/3; /* บังคับสัดส่วนภาพให้เท่ากัน */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .gallery-item img {
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card img {
             width: 100%;
-            height: 100%;
+            height: 220px;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            transition: transform 0.5s ease;
         }
 
-        /* เอฟเฟกต์เมื่อเอาเมาส์ชี้ (Hover) */
-        .gallery-item:hover img {
-            transform: scale(1.1);
+        .card:hover img {
+            transform: scale(1.05);
         }
 
-        /* ป้ายชื่อสถานที่ */
-        .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: white;
+        .card-content {
             padding: 20px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
         }
 
-        .gallery-item:hover .overlay {
-            transform: translateY(0);
+        .card-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #0056b3;
+            margin: 0 0 10px 0;
         }
 
-        .overlay h3 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
+        .card-desc {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
         }
 
-        .overlay p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* ส่วนท้าย (Footer) */
+        /* ส่วนท้ายเว็บ (Footer) */
         footer {
             text-align: center;
             padding: 20px;
             background-color: #222;
-            color: white;
-            margin-top: auto;
+            color: #aaa;
+            margin-top: 50px;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>🇹🇭 เที่ยวเมืองไทย ไม่ไปไม่รู้</h1>
-        <p>รวมภาพประทับใจจากสถานที่ท่องเที่ยวทั่วประเทศไทย</p>
+        <h1>มหัศจรรย์เมืองไทย</h1>
+        <p>ออกเดินทางสำรวจความงามของสถานที่ท่องเที่ยวในประเทศไทย</p>
     </header>
 
     <div class="container">
         <div class="gallery">
             
-            <!-- รูปที่ 1 -->
-            <div class="gallery-item">
-                <!-- เปลี่ยนลิงก์ใน src="..." เป็นรูปของคุณ -->
-                <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80" alt="เชียงใหม่">
-                <div class="overlay">
-                    <h3>เชียงใหม่</h3>
-                    <p>ธรรมชาติและวัฒนธรรมล้านนา</p>
+            <!-- สถานที่ 1 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1508009603885-247a50f44cea?auto=format&fit=crop&w=800&q=80" alt="วัดอรุณราชวราราม กรุงเทพมหานคร">
+                <div class="card-content">
+                    <h2 class="card-title">กรุงเทพมหานคร</h2>
+                    <p class="card-desc">สัมผัสความวิจิตรตระการตาของวัดอรุณราชวราราม แลนด์มาร์คสำคัญริมแม่น้ำเจ้าพระยาที่ดังไปทั่วโลก</p>
                 </div>
             </div>
 
-            <!-- รูปที่ 2 -->
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80" alt="กรุงเทพมหานคร">
-                <div class="overlay">
-                    <h3>กรุงเทพมหานคร</h3>
-                    <p>สีสันแห่งเมืองหลวง</p>
+            <!-- สถานที่ 2 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=800&q=80" alt="เชียงใหม่">
+                <div class="card-content">
+                    <h2 class="card-title">เชียงใหม่</h2>
+                    <p class="card-desc">รับลมหนาว ชมวิวธรรมชาติบนยอดดอย และซึมซับวัฒนธรรมล้านนาที่เต็มเปี่ยมไปด้วยมนต์เสน่ห์</p>
                 </div>
             </div>
 
-            <!-- รูปที่ 3 -->
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1589394815804-964ce0ff9657?auto=format&fit=crop&w=800&q=80" alt="ภูเก็ต">
-                <div class="overlay">
-                    <h3>ภูเก็ต</h3>
-                    <p>ไข่มุกแห่งอันดามัน</p>
+            <!-- สถานที่ 3 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1589394815804-964ce0fa58f0?auto=format&fit=crop&w=800&q=80" alt="ทะเลภูเก็ต">
+                <div class="card-content">
+                    <h2 class="card-title">ภูเก็ต</h2>
+                    <p class="card-desc">ไข่มุกแห่งอันดามัน พักผ่อนริมชายหาดทรายขาว น้ำทะเลใส และจุดชมวิวพระอาทิตย์ตกที่สวยที่สุด</p>
                 </div>
             </div>
 
-            <!-- รูปที่ 4 -->
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1558500213-9580b067a992?auto=format&fit=crop&w=800&q=80" alt="พระนครศรีอยุธยา">
-                <div class="overlay">
-                    <h3>พระนครศรีอยุธยา</h3>
-                    <p>มรดกโลกทางวัฒนธรรม</p>
+            <!-- สถานที่ 4 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1571401834381-0f72eb37f5d0?auto=format&fit=crop&w=800&q=80" alt="อุทยานประวัติศาสตร์อยุธยา">
+                <div class="card-content">
+                    <h2 class="card-title">พระนครศรีอยุธยา</h2>
+                    <p class="card-desc">ย้อนรอยอดีตราชธานีเก่า เดินชมอุทยานประวัติศาสตร์ที่ได้รับการยกย่องให้เป็นมรดกโลกจาก UNESCO</p>
                 </div>
             </div>
 
-            <!-- รูปที่ 5 -->
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1550684376-efcbd6e3f031?auto=format&fit=crop&w=800&q=80" alt="กระบี่">
-                <div class="overlay">
-                    <h3>กระบี่</h3>
-                    <p>สวรรค์ของคนรักทะเล</p>
+            <!-- สถานที่ 5 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1549473889-14f410d83298?auto=format&fit=crop&w=800&q=80" alt="ทะเลกระบี่">
+                <div class="card-content">
+                    <h2 class="card-title">กระบี่</h2>
+                    <p class="card-desc">ตื่นตาตื่นใจกับภูเขาหินปูนที่ตั้งตระหง่านกลางทะเล พายเรือคายัค และทัวร์เกาะสวรรค์แห่งภาคใต้</p>
                 </div>
             </div>
 
-            <!-- รูปที่ 6 -->
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1600109968846-92f70eb4e594?auto=format&fit=crop&w=800&q=80" alt="แม่ฮ่องสอน">
-                <div class="overlay">
-                    <h3>แม่ฮ่องสอน</h3>
-                    <p>เมืองสามหมอก</p>
+            <!-- สถานที่ 6 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?auto=format&fit=crop&w=800&q=80" alt="พัทยา ชลบุรี">
+                <div class="card-content">
+                    <h2 class="card-title">ชลบุรี</h2>
+                    <p class="card-desc">เมืองท่องเที่ยวใกล้กรุงเทพฯ ที่มีทั้งทะเล คาเฟ่สวยๆ และกิจกรรมมากมายให้ทำได้ตลอดทั้งวัน</p>
                 </div>
             </div>
 
@@ -185,7 +173,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 แกลลอรีท่องเที่ยวไทย. สร้างสรรค์ด้วยความหลงใหล.</p>
+        <p>&copy; 2026 แกลเลอรีท่องเที่ยวไทย | สร้างสรรค์ด้วยความภูมิใจ</p>
     </footer>
 
 </body>
