@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เที่ยวเมืองไทย - Amazing Thailand Gallery</title>
+    <style>
+        /* รีเซ็ตค่าพื้นฐาน */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f7f9fa;
+            color: #333;
+        }
+
+        /* ส่วนหัวเว็บบอร์ด (Header) */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=1920') no-repeat center center/cover;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* ส่วนเนื้อหาหลัก (Gallery Container) */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* ระบบ Grid สำหรับจัดวางรูปภาพ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* การ์ดสถานที่ท่องเที่ยว */
+        .gallery-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* ส่วนรูปภาพ */
+        .image-box {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+            background-color: #e0e0e0; /* สีพื้นหลังระหว่างรอโหลดรูป */
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .image-box img {
+            transform: scale(1.1);
+        }
+
+        /* แท็กบอกภาค (Tag) */
+        .location-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #ff5722;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* ข้อมูลใต้ภาพ */
+        .info-box {
+            padding: 20px;
+        }
+
+        .info-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        .info-box p {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            line-height: 1.5;
+        }
+
+        /* ส่วนท้ายเว็บ (Footer) */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>แกลเลอรีท่องเที่ยวประเทศไทย</h1>
+        <p>บันทึกความทรงจำและสถานที่สวยงามทั่วไทยที่คุณไม่ควรพลาด</p>
+    </header>
+
+    <!-- Main Gallery Section -->
+    <div class="container">
+        <div class="gallery-grid">
+
+            <!-- การ์ดที่ 1: เชียงใหม่ -->
+            <div class="gallery-item">
+                <div class="image-box">
+                    <span class="location-tag">ภาคเหนือ</span>
+                    <!-- 💡 ใส่ที่อยู่รูปภาพของคุณที่ src ด้านล่างนี้ -->
+                    <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?q=80&w=600" alt="เชียงใหม่">
+                </div>
+                <div class="info-box">
+                    <h3>ดอยอินทนนท์, เชียงใหม่</h3>
+                    <p>สัมผัสลมหนาวและทะเลหมอกบนยอดดอยที่สูงที่สุดในประเทศไทย แหล่งรวมธรรมชาติอันสมบูรณ์</p>
+                </div>
+            </div>
+
+            <!-- การ์ดที่ 2: กรุงเทพฯ -->
+            <div class="gallery-item">
+                <div class="image-box">
+                    <span class="location-tag">ภาคกลาง</span>
+                    <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=600" alt="กรุงเทพฯ">
+                </div>
+                <div class="info-box">
+                    <h3>วัดพระแก้ว, กรุงเทพฯ</h3>
+                    <p>ชมความงดงามของสถาปัตยกรรมไทยอันเป็นเอกลักษณ์และพระแก้วมรกตคู่บ้านคู่เมือง</p>
+                </div>
+            </div>
+
+            <!-- การ์ดที่ 3: กระบี่ -->
+            <div class="gallery-item">
+                <div class="image-box">
+                    <span class="location-tag">ภาคใต้</span>
+                    <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=600" alt="กระบี่">
+                </div>
+                <div class="info-box">
+                    <h3>ไร่เลย์, กระบี่</h3>
+                    <p>สวรรค์ของนักปีนผาและผู้รักหาดทรายขาวละเอียด ทะเลสีครามที่ล้อมรอบด้วยหน้าผาหินปูน</p>
+                </div>
+            </div>
+
+            <!-- การ์ดที่ 4: สุโขทัย -->
+            <div class="gallery-item">
+                <div class="image-box">
+                    <span class="location-tag">ภาคเหนือ</span>
+                    <img src="https://images.unsplash.com/photo-1608958416710-bbbf7778a02c?q=80&w=600" alt="สุโขทัย">
+                </div>
+                <div class="info-box">
+                    <h3>อุทยานประวัติศาสตร์สุโขทัย</h3>
+                    <p>ย้อนเวลาศึกษาประวัติศาสตร์ไทยท่ามกลางโบราณสถานและมรดกโลกอันทรงคุณค่า</p>
+                </div>
+            </div>
+
+            <!-- 💡 คุณสามารถก๊อปปี้บล็อกด้านบนเพื่อเพิ่มสถานที่อื่นๆ ได้ตามต้องการเลยครับ -->
+
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 Thailand Travel Gallery. สร้างด้วยความรักในการเดินทาง</p>
+    </footer>
+
+</body>
+</html>
